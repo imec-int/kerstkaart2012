@@ -42,3 +42,10 @@
 #googlescreenshot{
     display: none;
 }
+
+
+#videooverlay{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}

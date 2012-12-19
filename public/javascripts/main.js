@@ -23,6 +23,8 @@ $(function(){
 				showScreenshot();
 			}
 		});
+
+	$('#myVideo').seeThru({start : 'autoplay' , end : 'stop'});
 });
 
 
