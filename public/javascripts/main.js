@@ -4,7 +4,6 @@ var typer = 0;
 var typeDone = false;
 var screenshotDone = false;
 var screenshotIsVisible = false;
-var screenshot;
 
 
 $(function(){
