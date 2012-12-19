@@ -34,5 +34,5 @@ http.createServer(app).listen(app.get('port'), function(){
 
 
 app.get('/', function(req, res){
-	res.render('index', { name: 'Express' });
+	res.render('index', { name: req.query.name });
 });
