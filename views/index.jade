@@ -5,30 +5,14 @@ html
 		meta(charset='utf-8')
 		link(rel='stylesheet', type='text/css', href='/stylesheets/main.css')
 		script(type='text/javascript', src='http://code.jquery.com/jquery-1.8.3.min.js')
+		script(type='text/javascript', src='/javascripts/main.js')
 		script(type='text/javascript')
 			var name = "#{name}";
-			var typeIndex = 0;
-			var typer = 0;
-
-
-			$(function(){
-				// start typing
-				typer = setInterval(typeTick,300);
-			});
-
-
-			function typeTick(){
-				$("input#inpSearch").val($("input#inpSearch").val()+name.charAt(typeIndex));
-				typeIndex++;
-				if(typeIndex >name.length){
-					clearInterval(typer);
-				}
-			}
 	body
 		#container
 			#googleSearch
 				form#gForm
 					input#inpSearch(type='input', value='')
-			#searchcontrol Crazy results
+			img#googlescreenshot
 
 
