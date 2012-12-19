@@ -45,3 +45,14 @@
     min-height: 480px;
     min-width: 800px;
 }
+
+#results{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("result_rw.png");
+    width: 100%;
+    height: 100%;
+}
