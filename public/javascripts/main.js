@@ -7,6 +7,8 @@ var screenshotIsVisible = false;
 
 
 $(function(){
+	$("input#inpSearch").val("");
+
 	// start typing
 	typer = setInterval(typeTick,300);
 
