@@ -3,21 +3,25 @@
     padding: 0;
 }
 
-#container{
+.videocontainer{
     position: relative;
-    width: 640px;
-    height: 360px;
-    border: 1px solid black;
-    overflow: hidden;
     margin-left: auto;
     margin-right: auto;
     margin-top: 100px;
 }
 
+#html5videocontainer{
+    position: relative;
+    border: 1px solid black;
+    overflow: hidden;
+    width: 640px;
+    height: 360px;
+}
+
 #googleSearch{
     position: absolute;
-    top: -60px;
-    left: -110px;
+    top: 0px;
+    left: 0px;
     background-image: url("../images/googleMix.jpg");
     width: 888px;
     height: 506px;

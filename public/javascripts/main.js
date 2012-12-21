@@ -49,3 +49,9 @@ function typeTick(){
 		showScreenshot();
 	}
 }
+
+function checkBrowser(){
+	if (Modernizr.canvas && Modernizr.video){
+
+	}
+}
