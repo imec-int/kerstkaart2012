@@ -11,7 +11,7 @@ $(function(){
 });
 
 function checkBrowser(){
-	if (Modernizr.canvas && Modernizr.video){
+	if (Modernizr.canvas && Modernizr.video && !jQuery.browser.mobile){
 		doHTML5VideoInteractive()
 	}else{
 		doYoutubeVideo();

@@ -8,6 +8,7 @@ var express = require('express')
 	, path = require('path')
 	, Step = require('Step')
 	, webshot = require('./webshot')
+	, fs = require('fs');
 
 
 var app = express();
@@ -35,10 +36,12 @@ http.createServer(app).listen(app.get('port'), function(){
 
 app.get('/', function(req, res){
 	res.render('index', { name: req.query.name });
+	logPerson(req.query.name, req.headers['user-agent'], 'main');
 });
 
 app.get('/youtube', function(req, res){
 	res.render('youtube', { name: req.query.name });
+	logPerson(req.query.name, req.headers['user-agent'], 'youtube');
 });
 
 app.get('/getgooglescreenshot', function(req, res){
@@ -58,6 +61,18 @@ app.get('/getgooglescreenshot', function(req, res){
 	);
 });
 
+
+function logPerson(name, useragent, page){
+	var data = {
+		time: (new Date()).getTime(),
+		name: name,
+		page: page,
+		useragent: useragent
+	};
+
+	fs.appendFile('log.txt', JSON.stringify(data) + "\n", function (err) {
+	});
+}
 
 
 function createWebshot(name, callback){
