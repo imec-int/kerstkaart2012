@@ -62,6 +62,8 @@ function pollTime(){
 
 	if(time > 36){
 		startTyping();
+
+		_gaq.push(['_trackEvent', 'html5video', 'time36']);
 	}else{
 		//check again:
 		setTimeout(pollTime,1000);
@@ -69,6 +71,8 @@ function pollTime(){
 }
 
 function videoEnds(){
+	_gaq.push(['_trackEvent', 'html5video', 'videoends']);
+
 	window.location = "https://www.google.be/search?q=" + escape(name);
 }
 
