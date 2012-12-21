@@ -52,6 +52,14 @@ function pollTime(){
 	var time = $('#myVideo')[0].currentTime;
 
 
+	if(time > 4){
+		//opacity ipv hide, anders schuift video op
+		$('.klikhier').animate({
+   			opacity: 0
+   		});
+	}
+
+
 	if(time > 36){
 		startTyping();
 	}else{
