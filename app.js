@@ -6,7 +6,6 @@
 var express = require('express')
 	, http = require('http')
 	, path = require('path')
-	, Step = require('Step')
 	, webshot = require('./webshot')
 	, fs = require('fs');
 
@@ -45,20 +44,14 @@ app.get('/youtube', function(req, res){
 });
 
 app.get('/getgooglescreenshot', function(req, res){
-	Step(
-		function (){
-			createWebshot(req.query.name, this);
-		},
-
-		function (err, filename){
-			if(err){
-				res.json({err: err});
-				console.log(err);
-			}else{
-				res.json({err: null, screenshot: filename});
-			}
+	createWebshot(req.query.name, function (err, filename){
+		if(err){
+			res.json({err: err});
+			console.log(err);
+		}else{
+			res.json({err: null, screenshot: filename});
 		}
-	);
+	});
 });
 
 
