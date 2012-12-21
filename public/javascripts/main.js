@@ -5,6 +5,8 @@ var typeDone = false;
 var screenshotDone = false;
 var screenshotIsVisible = false;
 
+var messageHidden = false;
+
 
 $(function(){
 	checkBrowser();
@@ -52,11 +54,14 @@ function pollTime(){
 	var time = $('#myVideo')[0].currentTime;
 
 
-	if(time > 4){
+	if(time > 4 && !messageHidden){
+		messageHidden = true;
 		//opacity ipv hide, anders schuift video op
 		$('.klikhier').animate({
    			opacity: 0
    		});
+
+   		_gaq.push(['_trackEvent', 'html5video', 'time4']);
 	}
 
 
