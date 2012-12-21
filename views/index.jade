@@ -22,7 +22,12 @@ html
 			})();
 
 	body
-		.videocontainer#html5videocontainer
+		.klikhier
+			a(href="youtube/?name=#{name}") Klik hier als u geen video te zien krijgt
+			br
+			span(style="font-size: 12px") De gepersonaliseerde kerstkaart werkt helaas niet op mobiele toestellen.
+
+		.videocontainer#html5videocontainer(style="margin-top:40px")
 			#googleSearch
 				form#gForm
 					input#inpSearch(type='input', value='')
@@ -31,8 +36,5 @@ html
 				video#myVideo
 					source(src="/video/mixkerst.mp4", type="video/mp4")
 					source(src="/video/mixkerst.ogv", type="video/ogg")
-		.klikhier
-			a(href="youtube/?name=#{name}") Klik hier als u geen video te zien krijgt
-			br
-			span(style="font-size: 12px") De gepersonaliseerde kerstkaart werkt helaas niet op mobiele toestellen.
+
 
