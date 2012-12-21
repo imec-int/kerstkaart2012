@@ -37,6 +37,10 @@ app.get('/', function(req, res){
 	res.render('index', { name: req.query.name });
 });
 
+app.get('/youtube', function(req, res){
+	res.render('youtube', { name: req.query.name });
+});
+
 app.get('/getgooglescreenshot', function(req, res){
 	Step(
 		function (){
@@ -59,22 +63,15 @@ app.get('/getgooglescreenshot', function(req, res){
 function createWebshot(name, callback){
 	var options = {
 		screenSize: {
-			width: 888
-		, height: 506
-		}
-	, shotSize: {
-			width: 'window'
-		, height: 506
-		}
-	, script: function() {
-			var links = document.getElementsByTagName('h2');
-			for (var i=0; i<links.length; i++) {
-				var link = links[i];
-				link.innerHTML = 'This is an H2 heading';
-			}
-		}
-	//, userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
-	, userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:18.0) Gecko/20100101 Firefox/18.0'
+			width: 960,
+			height: 2000
+		},
+		shotSize: {
+			width: 'window',
+			height: 2000
+		},
+		//userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+		userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:18.0) Gecko/20100101 Firefox/18.0'
 	}
 
 	var filename =  __dirname + '/public/googleshots/'+ cleanName(name) +'.png';

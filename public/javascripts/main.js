@@ -7,10 +7,23 @@ var screenshotIsVisible = false;
 
 
 $(function(){
+	checkBrowser();
+});
+
+function checkBrowser(){
+	if (Modernizr.canvas && Modernizr.video){
+		doHTML5VideoInteractive()
+	}else{
+		doYoutubeVideo();
+	}
+}
+
+function doHTML5VideoInteractive(){
 	$("input#inpSearch").val("");
 
-	// start typing
-	typer = setInterval(typeTick,300);
+	setTimeout(function(){
+		$("#googleSearch").show();
+	},2000);
 
 	// async screenshot ophalen
 	$.getJSON(
@@ -26,22 +39,39 @@ $(function(){
 			}
 		});
 
+
 	$('#myVideo').seeThru({start : 'autoplay' , end : 'stop'});
-});
 
+	$('#myVideo')[0].addEventListener('ended',videoEnds,false);
 
-function showScreenshot(){
-	// paar checks, want we weten niet wat er eerst gaat gedaan zijn: het typen of de screenhot laden
-	if(typeDone && screenshotDone && !screenshotIsVisible){
-		screenshotIsVisible = true;
-		$("#googlescreenshot").fadeIn();
-		$("#googleSearch").fadeOut();
-	}
+	pollTime();
 }
 
 
+function pollTime(){
+	var time = $('#myVideo')[0].currentTime;
+
+
+	if(time > 36){
+		startTyping();
+	}else{
+		//check again:
+		setTimeout(pollTime,1000);
+	}
+}
+
+function videoEnds(){
+	window.location = "https://www.google.be/search?q=" + escape(name);
+}
+
+
+function startTyping(){
+	// start typing
+	typer = setInterval(typeTick,300);
+}
+
 function typeTick(){
-	$("input#inpSearch").val($("input#inpSearch").val()+name.charAt(typeIndex));
+	$("#inpSearch").val($("#inpSearch").val()+name.charAt(typeIndex));
 	typeIndex++;
 	if(typeIndex >name.length){
 		clearInterval(typer);
@@ -50,8 +80,32 @@ function typeTick(){
 	}
 }
 
-function checkBrowser(){
-	if (Modernizr.canvas && Modernizr.video){
+
+function showScreenshot(){
+	// paar checks, want we weten niet wat er eerst gaat gedaan zijn: het typen of de screenhot laden
+	if(typeDone && screenshotDone && !screenshotIsVisible){
+		screenshotIsVisible = true;
+
+		//beetje wachten voor hij de resultaten toont
+		setTimeout(function(){
+			$("#googlescreenshot").fadeIn();
+			$("#googleSearch").fadeOut();
+
+			scroll();
+		}, 700);
 
 	}
 }
+
+function scroll(){
+	$('#googlescreenshot').animate({
+    	top: '-1000px'
+    },6000);
+}
+
+
+function doYoutubeVideo(){
+	window.location = "youtube/?name=" + escape(name);
+}
+
+

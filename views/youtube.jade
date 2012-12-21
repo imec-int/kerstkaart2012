@@ -1,0 +1,36 @@
+!!! 5
+html
+	head
+		title Google
+		meta(charset='utf-8')
+		link(rel='stylesheet', type='text/css', href='/stylesheets/main.css')
+		script(type='text/javascript')
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-37206582-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+
+	body
+		.videocontainer#youtube
+			.info
+				span Jammer #{name}, uw browser ondersteunt onze gepersonaliseerde versie van onze kerstkaart niet. Installeer eventueel de laatste versie van&nbsp;
+				a(href="http://www.google.com/chrome") Chrome
+				span &nbspof&nbsp;
+				a(href="http://www.mozilla.org/nl/firefox/") Mozilla
+				span &nbsp;om nogmaals te proberen.
+				br
+				br
+			iframe(width='640', height='360', src='http://www.youtube.com/embed/FtIKiiTzwV4?rel=0', frameborder='0', allowfullscreen='allowfullscreen')
+
+		.klikhier(style="margin-top:70px")
+			a(href="/?name=#{name}") Klik hier voor de gepersonaliseerde versie!
+			br
+			span(style="font-size: 12px") De gepersonaliseerde kerstkaart werkt helaas niet op mobiele toestellen.
+
+
